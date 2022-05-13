@@ -5,20 +5,23 @@
     <p v-if="posts.length">
       <PostList v-if="showPosts" :posts="posts" />
     </p>
-    <p v-else>Loading...</p>
+    <p v-else>
+      <Spinner />
+    </p>
     <button @click="showPosts = !showPosts">toggle posts</button>
     <button @click="posts.pop()">delete a post</button>
   </div>
 </template>
 
 <script>
-import PostList from "../components/PostList.vue";
+import PostList from "../components/PostList.vue"
 import { ref } from '@vue/reactivity'
-import getPosts from "../composables/getPosts";
+import getPosts from "../composables/getPosts"
+import Spinner from "../components/Spinner.vue"
 
 export default {
   name: 'Home',
-  components: { PostList },
+  components: { PostList, Spinner },
   setup() {
     const showPosts = ref(true)
     
