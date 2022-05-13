@@ -15,10 +15,20 @@ export default {
   components: { PostList },
   setup() {
     const posts = ref([])
-
+    const error = ref(null)
     const showPosts = ref(true)
 
-    return { posts, showPosts }
+    const load = async () => {
+      try {
+        let data = await fetch('http://localhost:3000/posts')
+        console.log(data)
+      }
+      catch (err) {
+
+      }
+    }
+    load()
+    return { posts, showPosts, load }
   }
 }
 </script>
