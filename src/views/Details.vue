@@ -11,27 +11,27 @@
 
 <script>
   import getPost from '../composables/getPost'
-  import Spinner from "../components/Spinner.vue";
+  import Spinner from "../components/Spinner.vue"
+  import { useRoute } from "vue-router"
 
   export default {
     props: ['id'],
     components: { Spinner },
     setup(props) {
+      const route = useRoute()
+      console.log(route)
       const { post, error, load } = getPost(props.id)
 
       load()
-      return { post, error }
+      return { post, error, route }
     }
   }
 </script>
 
-<style scoped>
-  .tags a {
-    margin-right: 10px;
-  }
+<style>
   .post {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 2rem;
   }
   .post p {
     color: #444;

@@ -13,7 +13,6 @@
 
 <script>
 import PostList from "../components/PostList.vue"
-import { ref } from '@vue/reactivity'
 import getPosts from "../composables/getPosts"
 import Spinner from "../components/Spinner.vue"
 
