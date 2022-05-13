@@ -8,7 +8,7 @@
   }
 </script>
 
-<style scoped>
+<style>
 .spin {
   display: block;
   width: 40px;
