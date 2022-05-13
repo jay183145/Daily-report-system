@@ -99,7 +99,6 @@ export default {
     border: none;
     padding: 8px 16px;
     font-size: 18px
-
   }
   .pill {
     display: inline-block;

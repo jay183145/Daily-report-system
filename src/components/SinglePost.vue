@@ -25,5 +25,29 @@ export default {
 }
 </script>
 <style >
-  
+  .post {
+    margin: 0 40px 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed #1802028c;
+  }
+  .post h3 {
+    display: inline-block;
+    position: relative;
+    font-size: 26px;
+    color: white;
+    margin-bottom: 10px;
+    max-width: 400px;
+  }
+  .post h3::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #9d04ef;
+    position: absolute;
+    z-index: -1;
+    padding: 0.3rem 2rem;
+    margin: -.3rem -1.5rem;
+    border-radius: 2rem;
+  }
 </style>
