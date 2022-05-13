@@ -19,6 +19,7 @@
 
 <script>
 import { ref } from 'vue'
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
@@ -26,6 +27,8 @@ export default {
     const body = ref('')
     const tag = ref('')
     const tags = ref([])
+
+    const router = useRouter()
 
     const handleKeydown = () => {
       if (!tags.value.includes(tag.value)) {
@@ -47,9 +50,11 @@ export default {
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(post)
       })
+
+      router.push({ name:'Home' })
     }
 
-    return { title, body, tag, tags, handleKeydown, handleSubmit }
+    return { title, body, tag, tags, handleKeydown, handleSubmit, router  }
   }
 }
 </script>
@@ -84,7 +89,7 @@ export default {
     display: block;
     width: 100%;
     height: 100%;
-    background: #9d04ef;
+    background: #77bcf8;
     position: absolute;
     z-index: -1;
     padding: 0.3rem 2rem;
@@ -94,7 +99,7 @@ export default {
   button {
     display: block;
     margin-top: 30px;
-    background: rgb(4, 134, 233);
+    background: rgb(188, 242, 102);
     color: white;
     border: none;
     padding: 8px 16px;

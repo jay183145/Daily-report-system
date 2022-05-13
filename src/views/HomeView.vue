@@ -3,13 +3,11 @@
     <h1>Home</h1>
     <p v-if="error">{{ error }}</p>
     <p v-if="posts.length">
-      <PostList v-if="showPosts" :posts="posts" />
+      <PostList :posts="posts" />
     </p>
     <p v-else>
       <Spinner />
     </p>
-    <button @click="showPosts = !showPosts">toggle posts</button>
-    <button @click="posts.pop()">delete a post</button>
   </div>
 </template>
 
@@ -23,13 +21,11 @@ export default {
   name: 'Home',
   components: { PostList, Spinner },
   setup() {
-    const showPosts = ref(true)
-    
     const { posts, error, load } = getPosts()
 
     load()
 
-    return { showPosts, posts, error }
+    return { posts, error }
   }
 }
 </script>
