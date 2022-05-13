@@ -1,0 +1,99 @@
+<template>
+  <div class="create">
+    <form>
+      <label>Title:</label>
+      <input v-model="title" type="text" required>
+      <label>Context:</label>
+      <textarea v-model="body" required></textarea>
+      <label>Tags: (hit enter to add a tag)</label>
+      <input v-model="tag"
+       type="text"
+       @keydown.enter.prevent="handleKeydown"
+      >
+      
+      <div v-for="tag in tags" :key="tag" class="pill">#{{ tag }}</div>
+      <button>Add Post</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const title = ref('')
+    const body = ref('')
+    const tag = ref('')
+    const tags = ref([])
+
+    const handleKeydown = () => {
+      if (!tags.value.includes(tag.value)) {
+        tag.value = tag.value.replace(/s/, '') // removes all whitespace
+        tags.value.push(tag.value)
+      }
+      tag.value = ''
+    }
+
+    return { title, body, tag, tags, handleKeydown }
+  }
+}
+</script>
+
+<style scoped>
+  form {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  input, textarea {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid rgb(16, 16, 16);
+  }
+  textarea {
+    height: 160px;
+  }
+  label {
+    display: inline-block;
+    margin-top: 30px;
+    position: relative;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+  }
+  label::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #9d04ef;
+    position: absolute;
+    z-index: -1;
+    padding: 0.3rem 2rem;
+    margin: -.3rem -.5rem;
+    border-radius: 2rem;
+  }
+  button {
+    display: block;
+    margin-top: 30px;
+    background: rgb(4, 134, 233);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 18px
+
+  }
+  .pill {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    color: #444;
+    background: #ddd;
+    padding: 8px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+</style>
