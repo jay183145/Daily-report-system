@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <PostList v-if="showPosts" :posts="posts" />
+    <p v-if="error">{{ error }}</p>
+    <p v-if="posts.length">
+      <PostList v-if="showPosts" :posts="posts" />
+    </p>
+    <p v-else>Loading...</p>
     <button @click="showPosts = !showPosts">toggle posts</button>
     <button @click="posts.pop()">delete a post</button>
   </div>
@@ -20,10 +24,12 @@ export default {
 
     const load = async () => {
       try {
-        let data = await fetch('http://localhost:3000/posts1')
+        let data = await fetch('http://localhost:3000/posts')
         if (!data.ok) {
           throw Error('no data available')
         }
+        posts.value = await data.json()
+        console.log(data)
       }
       catch (err) {
         error.value = err.message
@@ -31,7 +37,8 @@ export default {
       }
     }
     load()
-    return { posts, showPosts, load }
+
+    return { posts, showPosts, load, error }
   }
 }
 </script>
