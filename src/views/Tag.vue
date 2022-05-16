@@ -35,5 +35,9 @@ export default {
 </script>
 
 <style scoped>
-
+  .tag {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+  }
 </style>
