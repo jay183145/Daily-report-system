@@ -2,7 +2,7 @@
   <div class="home">
     <h1>Home</h1>
     <p v-if="error">{{ error }}</p>
-    <p v-if="posts.length">
+    <p v-if="posts.length" class="layout">
       <PostList :posts="posts" />
       <TagCloud :posts="posts" />
     </p>
@@ -36,5 +36,10 @@ export default {
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
   }
 </style>

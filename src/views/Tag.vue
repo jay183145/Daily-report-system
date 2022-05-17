@@ -1,7 +1,7 @@
 <template>
   <div class="tag">
     <div v-if="error">{{ error }}</div>
-    <div v-if="posts.length">
+    <div v-if="posts.length" class="layout">
       <PostList :posts="postsWithTag" />
       <TagCloud :posts="posts" />
     </div>
@@ -36,7 +36,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
   .tag {
     max-width: 1200px;
     margin: 0 auto;
