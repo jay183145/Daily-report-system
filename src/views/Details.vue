@@ -28,7 +28,8 @@
 <style>
   .post {
     max-width: 1200px;
-    margin: 0 2rem;
+    margin: 0 auto;
+    padding: 10px;
   }
   .post p {
     color: #444;
